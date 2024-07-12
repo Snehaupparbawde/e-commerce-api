@@ -4,19 +4,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.dnyanyog.common.Dbutils;
-import org.dnyanyog.dto.Login;
+import org.dnyanyog.dto.LoginRequest;
+import org.dnyanyog.dto.LoginResponse;
 
 public class LoginService {
-	public String login(Login loginBody) throws SQLException {
+	public LoginResponse login(LoginRequest loginBody) throws SQLException {
+		LoginResponse response = new LoginResponse();
 		String loginquery = "SELECT * FROM login WHERE user='" + loginBody.user + "' AND password = '"
 				+ loginBody.password + "'";
 		ResultSet resultset = Dbutils.executeSelectQuery(loginquery);
 		if (resultset.next()) {
-			return "Login Success";
 
+			response.errorCode = "0000";
+			response.message = "Login Success";
+			return response;
 		}
-		return "Login Failed";
-
+		response.errorCode = "911";
+		response.message = "Login Failed";
+		return response;
 	}
 
 }

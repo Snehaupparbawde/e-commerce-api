@@ -20,15 +20,17 @@ public class Dbutils {
 		}
 	}
 
-	public static ResultSet executeSelectQuery(String query) throws SQLException { // Select query
-
+	public static ResultSet executeSelectQuery(String query) throws SQLException {
 		ResultSet result = statement.executeQuery(query);
 		return result;
 	}
 
-	public static void executeQuery(String query) throws SQLException { // Insert, Update, Delete, Create, Drop, //
-																		// truncate
-		statement.execute(query);
+	public static boolean executeQuery(String query) throws SQLException {
+		return statement.execute(query);
 	}
 
+	public static int executeUpdateQuery(String query) throws SQLException {
+		return statement.executeUpdate(query);
+
+	}
 }
