@@ -12,7 +12,7 @@ public class Dbutils {
 
 	static {
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/login_spring", "root", "Sneha@12345");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/e-commerce-api", "root", "Sneha@12345");
 
 			statement = connection.createStatement();
 		} catch (SQLException e) {
